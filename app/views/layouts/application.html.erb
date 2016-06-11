@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EditorsAndWriters</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+  <%= csrf_meta_tags %>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+    </script>
+  <![endif]-->
+</head>
+<body>
+  <header class="navbar-wrapper container">
+    <%= link_to image_tag("http://media.techonline.com/img/tmp/logo-placeholder.png", alt: "Logo"), 'http://www.editorsandwriters.com/', class: "brand-logo" %>
+    <nav class="right hide-on-small-only grey darken-2">
+      <ul>
+        <li class="signUpClick"><a>Sign Up</a></li>
+        <% if session[:alter_ego] %>
+          <li class="logoutClick"><%= link_to "Log Out", "logout" %></li>
+        <% else %>
+          <li class="loginClick"><a>Log In</a></li>
+        <% end %>
+      </ul>
+      <ul id="mobile-navlink" class="hide-on-med-and-up">
+        <li class="signUpClick"><a>Sign Up</a></li>
+        <% if session[:alter_ego] %>
+          <li class="logoutClick"><%= link_to "Log Out", "logout" %></li>
+        <% else %>
+          <li class="loginClick"><a>Log In</a></li>
+        <% end %>
+      </ul>
+    </nav>
+  </header>
+  <hr />
+  <div class="container">
+    <%= yield %>
+  </div>
+  <footer class="page-footer grey darken-2">
+    <div class="container">
+      <div class="row">
+        <div class="col s6">
+          <nav class="grey darken-2">
+            <ul>
+              <li class="footer-list"><%= link_to "How this works", "help" %></li>
+              <li class="footer-list"><%= link_to "EAW origin story", "abouteaw" %></li>
+            </ul>
+          </nav>
+        </div>
+        <nav class="col s3 offset-s3 grey darken-2">
+          <ul class="white-text">
+            <li class="footer-list signUpClick"><a>Sign Up</a></li>
+            <% if session[:alter_ego] %>
+              <li class="footer-list"><%= link_to "Log out", "logout" %></li>
+            <% else %>
+              <li class="footer-list loginClick"><a>Log In</a></li>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        <small>
+          A <%= link_to "Thing to Do", "http://www.thingtodo.today" %> production, donated to the comics community with love. <%= link_to "Contact us", "http://www.thingtodo.today/contactus" %> to check us out.
+        </small>
+      </div>
+    </div>
+  </footer>
+  <hr/>
+  <%= debug(params) if Rails.env.development? %>
+</body>
+</html>

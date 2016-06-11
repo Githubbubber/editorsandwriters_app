@@ -1,0 +1,20 @@
+body { background: white url('./wallpaper.jpg') repeat-x 0 0; }
+h1 { background-color: white; font-family: Arial; border: 1px solid black;  }
+li { list-style-type:none; }
+aside {
+    margin-top: 20px;
+    padding: 10px 0;
+    border: 1px solid black;
+}
+aside span {
+  display: block;
+  margin-bottom: 3px;
+  line-height: 1;
+}
+
+input[type="radio"]:not(:checked),
+input[type="radio"]:checked {
+  position: inherit;
+  left: auto;
+  opacity: 1;
+}

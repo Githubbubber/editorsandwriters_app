@@ -1,0 +1,73 @@
+<% if @members != false %>
+  <h1>Hello, you <%= session[:acct_type] %> you!</h1>
+  <% @members.each do |member| %>
+    <div>
+      <h2>Name: <%= link_to member.first_name, member %> </h2>
+      <p>Title: <%= member.title %></p>
+      <p>Location: <%= member.location %></p>
+    </div>
+  <% end%>
+<% else %>
+  <h1>Welcome!</h1>
+  <p>Please join up and see the action</p>
+<% end %>
+
+<div id="modal1" class="modal">
+  <div class="modal-content" id="userSignUp">
+    <%= form_tag("members", method: "create") do %>
+      <%= label_tag(:first_name, "First name:") %>
+      <%= text_field_tag(:first_name, "", required: "required") %>
+      <%= label_tag(:last_name, "Last name:") %>
+      <%= text_field_tag(:last_name, "", required: "required") %><br/>
+      <%= label_tag(:email, "Email:") %>
+      <%= text_field_tag(:email, "", minlength: 8, maxlength: 60, required: "required") %><br/>
+      <%= label_tag(:alter_ego, "Alter ego (username):") %>
+      <%= text_field_tag(:alter_ego, "", required: "required") %><br/>
+      <%= label_tag(:password_digest, "Password:") %>
+      <%= password_field_tag(:password_digest, "", minlength: 8, maxlength: 30, required: "required") %>
+      <%= label_tag(:password_confirmation, "Confirm Password:") %>
+      <%= password_field_tag(:password_confirmation, "", minlength: 8, maxlength: 30, required: "required") %><br/>
+      <%= label_tag(:location, "Location:") %>
+      <%= text_field_tag(:location, "") %><br/>
+      <%= label_tag(:title, "Title:") %>
+      <%= text_field_tag(:title, "") %><br/>
+      <%= label_tag(:education, "Education:") %>
+      <%= text_field_tag(:education, "") %><br/>
+      <%= label_tag(:haiku, "Haiku:") %>
+      <%= text_field_tag(:haiku, "") %><br/>
+      <%= label_tag(:fav_style_manual, "Favorite style manual (Strunk and White, Chicago, etc.):") %>
+      <%= text_field_tag(:fav_style_manual, "") %><br/>
+      <%= label_tag(:fav_rule, "Favorite rule:") %>
+      <%= text_field_tag(:fav_rule, "") %><br/>
+      <%= label_tag(:acct_type, "Account type:") %><br/>
+      <%= radio_button_tag(:acct_type, "editor") %> Editor &nbsp;
+      <%= radio_button_tag(:acct_type, "writer") %> Writer      <br/>
+      <br/>
+      <%= submit_tag("Sign Up") %>
+    <% end %>
+  </div>
+</div>
+
+<div id="modal2" class="modal">
+  <div class="modal-content" id="userLogin">
+    <%= form_tag("members", method: "patch") do %>
+      <div class="field">
+        <%= label_tag(:alter_ego, "Alter ego (username):") %>
+        <%= text_field_tag(:alter_ego, "", required: "required") %>
+      </div>
+      <div class="field">
+        <%= label_tag(:password_digest, "Password:") %>
+        <%= password_field_tag(:password_digest, "", minlength: 8, required: "required") %>
+      </div>
+      <div class="field">
+        <%= label_tag(:acct_type, "Account type:") %><br/>
+        <%= radio_button_tag(:acct_type, "editor") %> Editor &nbsp;
+        <%= radio_button_tag(:acct_type, "writer") %> Writer
+      </div>
+
+      <div class="actions">
+        <%= submit_tag("Log in") %>
+      </div>
+    <% end %>
+  </div>
+</div>
