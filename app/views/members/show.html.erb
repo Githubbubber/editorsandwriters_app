@@ -1,70 +1,93 @@
-<h1>Member name: <%= session[:first_name] %></h1>
-<%= link_to 'Home', root_path %> <br/>
-<%= link_to "Log out", logout_path %>
+<div class="section">
+  <div class="row">
+    <div class="col s10">
+      <section class="writers">
+        <div class="row">
+          <div class="border col s12 m6 l6">
+            1) avatar - <%= @member.avatar %><br/>
+            alter ego - <%= @member.alter_ego %>
+          </div>
+          <div class="border col s12 m6 l6">
+            2) tag line - <%= @member.haiku %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="border col s12 m12 l12">
+            3) origin story/about me - <%= @member.aboutme %><br/>
+            <!--Output everything as: simple_format(value, {}, wrapper_tag: 'div') <br/>
+            http://api.rubyonrails.org/classes/ActionView/Helpers/TextHelper.html#M002285 <br/>-->
+            location - <%= @member.location %> <br/>
+            <p>Member name: <%= session[:first_name] %></p> [USER CHOOSES TO SHOW THIS OR NOT] <br/>
+            email - <%= @member.email %> <br/>
+            title - <%= @member.title %> <br/>
+            education - <%= @member.education %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="border col s12 m6 l6">
+            4) slideshow - for sure genres [NEED  TABLE]
+          </div>
+          <div class="border col s12 m6 l6">
+            5) future genres [NEED CATEGORIES TABLE]
+          </div>
+        </div>
+        <div class="row">
+          <div class="border col s12 m12 l12">
+            <p>6) Presentation box: slideshow of 12-15 seconds goes here</p>
+            generic comic book cover [NEED CATEGORIES WITH THUMBNAILS]
+            <br />
+            description of the current snippet [NEED SAMPLES TABLE LINKED TO A CATEGORY]
+          </div>
+        </div>
+      </section>
 
-<section class="writers">
-  <div>
-    1) avatar - <%= @member.avatar %><br/>
-    alter ego - <%= @member.alter_ego %>
-  </div>
-  <div>
-    2) tag line - <%= @member.haiku %>
-  </div>
-  <div>
-    3) origin story/about me - <%= @member.aboutme %><br/>
-    <!--Output everything as: simple_format(value, {}, wrapper_tag: 'div') <br/>
-    http://api.rubyonrails.org/classes/ActionView/Helpers/TextHelper.html#M002285 <br/>-->
-    location - <%= @member.location %> <br/>
-    Name - <%= @member.first_name %> <%= @member.last_name %> [USER CHOOSES TO SHOW THIS OR NOT] <br/>
-    email - <%= @member.email %> <br/>
-    title - <%= @member.title %> <br/>
-    education - <%= @member.education %> <br/>
-  </div>
-  <div>
-    4) slideshow - for sure genres [NEED  TABLE]
-  </div>
-  <div>
-    5) future genres [NEED CATEGORIES TABLE]
-  </div>
-  <div>
-  <p>6) Presentation box: slideshow of 12-15 seconds goes here</p>
-    <div>
-      generic comic book cover [NEED CATEGORIES WITH THUMBNAILS]
+      <section class="editors">
+        <div class="row">
+          <div class="border col s12 m6 l6">
+            1) avatar - <%= @member.avatar %><br/>
+            alter ego - <%= @member.alter_ego %>
+          </div>
+          <div class="border col s12 m6 l6">
+            2) ratings widget
+            <br/>
+            3) Favorite rule - <%= @member.fav_rule %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="border col s12 m12 l12">
+            4) origin story/about me - <%= @member.aboutme %><br/>
+            <!--Output everything as: simple_format(value, {}, wrapper_tag: 'div') <br/>
+            http://api.rubyonrails.org/classes/ActionView/Helpers/TextHelper.html#M002285 <br/>-->
+            location - <%= @member.location %> <br/>
+            <p>Member name: <%= session[:first_name] %></p> [USER CHOOSES TO SHOW THIS OR NOT] <br/>
+            email - <%= @member.email %> <br/>
+            title - <%= @member.title %> <br/>
+            education - <%= @member.education %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="border col s12 m12 l12">
+            5) for sure genres
+          </div>
+        </div>
+        <div class="row">
+          <div class="border col s12 m12 l12">
+            6) reviews from writers
+          </div>
+        </div>
+      </section>
     </div>
-    <div>
-      description of the current snippet [NEED SAMPLES TABLE LINKED TO A CATEGORY]
+
+    <div class="col s2">
+      <aside>
+        <span>Contact Box - Static</span>
+        <br/>
+        <span>Request help btn</span>
+        <br/>
+        <span>Chat Box - Bottom absolute: Greyed out until accepted project</span>
+        <br/>
+        <span>Writers will have an "Offer help" button, and editors an "Request help" button</span>
+      </aside>
     </div>
   </div>
-</section>
-
-<section class="editors">
-  <div>
-    1) avatar - <%= @member.avatar %><br/>
-    alter ego - <%= @member.alter_ego %>
-  </div>
-  <div>
-    2) ratings widget
-  </div>
-  <div>
-    3) Favorite rule - <%= @member.fav_rule %>
-  </div>
-  <div>
-    4) origin story/about me - <%= @member.aboutme %><br/>
-  </div>
-  <div>
-    5) for sure genres
-  </div>
-  <div>
-    6) reviews from writers
-  </div>
-</section>
-
-<aside>
-  <span>Contact Box - Static</span>
-  <br/>
-  <span>Request help btn</span>
-  <br/>
-  <span>Chat Box - Bottom absolute: Greyed out until accepted project</span>
-  <br/>
-  <span>Writers will have an "Offer help" button, and editors an "Request help" button</span>
-</aside>
+</div>

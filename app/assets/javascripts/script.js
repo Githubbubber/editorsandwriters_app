@@ -33,4 +33,14 @@ $(document).ready(function() {
   //   console.log("complete");
   // });
 // End of section for API calls
+
+// Mobile hamburger menu
+  (function($){
+    $(function(){
+
+      $('.button-collapse').sideNav();
+
+    }); // end of document ready
+  })(jQuery); // end of jQuery name space
+// End of hamburger menu code
 });

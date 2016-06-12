@@ -46,7 +46,7 @@ class MembersController < ApplicationController
         else
           @members = false
         end
-        flash[:success] = "Login successful!"
+        # flash[:success] = "Login successful!"
         render :index
       else
         # byebug
@@ -96,7 +96,7 @@ class MembersController < ApplicationController
             @members = false
           end
           log_in @member
-          flash[:success] = "Welcome!"
+          # flash[:success] = "Welcome!"
           format.html { redirect_to @member, notice: 'Member was successfully created.' }
           format.json { render :show, status: :created, location: @member }
         else
@@ -128,7 +128,7 @@ class MembersController < ApplicationController
     respond_to do |format|
       if @member.update_attributes(first_name: "#{params[:member][:first_name]}", last_name: "#{params[:member][:last_name]}", email: "#{params[:member][:email]}", alter_ego: "#{params[:member][:alter_ego]}", password_digest: "#{params[:member][:password_digest]}", aboutme: "#{params[:aboutme]}", location: "#{params[:member][:location]}", title: "#{params[:member][:title]}", education: "#{params[:member][:education]}", haiku: "#{params[:member][:haiku]}", fav_style_manual: "#{params[:member][:fav_style_manual]}", fav_rule: "#{params[:member][:fav_rule]}", acct_type: "#{params[:member][:acct_type]}")
         #For keeping the avatar put: @member.update_attributes(avatar: av, first_name: "#{params[:member][:first_name]}", last_name: "#{params[:member][:last_name]}", email: "#{params[:member][:email]}", alter_ego: "#{params[:member][:alter_ego]}", password_digest: "#{params[:member][:password_digest]}", location: "#{params[:member][:location]}", title: "#{params[:member][:title]}", education: "#{params[:member][:education]}", haiku: "#{params[:member][:haiku]}", fav_style_manual: "#{params[:member][:fav_style_manual]}", fav_rule: "#{params[:member][:fav_rule]}", acct_type: "#{params[:member][:acct_type]}")
-        flash[:success] = "You info is now updated."
+        # flash[:success] = "You info is now updated."
         format.html { redirect_to @member, notice: 'Member was successfully updated.' }
         format.json { render :show, status: :ok, location: @member }
       else
