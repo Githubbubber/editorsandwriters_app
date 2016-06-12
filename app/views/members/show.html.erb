@@ -11,9 +11,9 @@
     2) tag line - <%= @member.haiku %>
   </div>
   <div>
-    3) origin story/about me [NEED COLUMN/TABLE FOR THIS ABOUT ME SECTION]<br/>
-    Output everything as: simple_format(value, {}, wrapper_tag: 'div') <br/>
-    http://api.rubyonrails.org/classes/ActionView/Helpers/TextHelper.html#M002285 <br/>
+    3) origin story/about me - <%= @member.aboutme %><br/>
+    <!--Output everything as: simple_format(value, {}, wrapper_tag: 'div') <br/>
+    http://api.rubyonrails.org/classes/ActionView/Helpers/TextHelper.html#M002285 <br/>-->
     location - <%= @member.location %> <br/>
     Name - <%= @member.first_name %> <%= @member.last_name %> [USER CHOOSES TO SHOW THIS OR NOT] <br/>
     email - <%= @member.email %> <br/>
@@ -46,10 +46,10 @@
     2) ratings widget
   </div>
   <div>
-    3) tag line - <%= @member.fav_rule %>
+    3) Favorite rule - <%= @member.fav_rule %>
   </div>
   <div>
-    4) origin story
+    4) origin story/about me - <%= @member.aboutme %><br/>
   </div>
   <div>
     5) for sure genres
@@ -58,6 +58,7 @@
     6) reviews from writers
   </div>
 </section>
+
 <aside>
   <span>Contact Box - Static</span>
   <br/>

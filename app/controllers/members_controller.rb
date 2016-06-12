@@ -37,7 +37,7 @@ class MembersController < ApplicationController
         session[:acct_type] = @member.acct_type
         session[:first_name] = @member.first_name
         # loginnum = loginnum + 1
-        # @member.update(loginnum: loginnum.to_i)
+        # @member.update(loginnum: loginnum)
         if session[:acct_type] == "editor"
           @members = Member.where(acct_type: "writer")
         elsif session[:acct_type] == "writer"
@@ -80,7 +80,7 @@ class MembersController < ApplicationController
   def create(hk = nil, fsm = nil, fr = nil)
     if params[:password_digest] == params[:password_confirmation]
 
-      @member = Member.create(avatar: "http://www.test.com/test.jpg", first_name: "#{params[:first_name]}", last_name: "#{params[:last_name]}", email: "#{params[:email]}", alter_ego: "#{params[:alter_ego]}", password_digest: "#{params[:password_digest]}", location: "#{params[:location]}", title: "#{params[:title]}", education: "#{params[:education]}", haiku: "#{params[:haiku]}", fav_style_manual: "#{params[:fav_style_manual]}", fav_rule: "#{params[:fav_rule]}", acct_type: "#{params[:acct_type]}")
+      @member = Member.create(avatar: "http://www.test.com/test.jpg", first_name: "#{params[:first_name]}", last_name: "#{params[:last_name]}", email: "#{params[:email]}", alter_ego: "#{params[:alter_ego]}", password_digest: "#{params[:password_digest]}", aboutme: "#{params[:aboutme]}", location: "#{params[:location]}", title: "#{params[:title]}", education: "#{params[:education]}", haiku: "#{params[:haiku]}", fav_style_manual: "#{params[:fav_style_manual]}", fav_rule: "#{params[:fav_rule]}", acct_type: "#{params[:acct_type]}")
       @password = BCrypt::Password.create("#{params[:password_digest]}")
       @member.update_attribute(:password_digest, @password)
       respond_to do |format|
@@ -123,10 +123,10 @@ class MembersController < ApplicationController
     # fr = params[:member][:fav_rule]
     # act = params[:member][:acct_type]
 
-    @member = Member.find(params[:member][:id].to_i)
+    @member = Member.find(params[:member][:id])
     # av = @member.avatar
     respond_to do |format|
-      if @member.update_attributes(first_name: "#{params[:member][:first_name]}", last_name: "#{params[:member][:last_name]}", email: "#{params[:member][:email]}", alter_ego: "#{params[:member][:alter_ego]}", password_digest: "#{params[:member][:password_digest]}", location: "#{params[:member][:location]}", title: "#{params[:member][:title]}", education: "#{params[:member][:education]}", haiku: "#{params[:member][:haiku]}", fav_style_manual: "#{params[:member][:fav_style_manual]}", fav_rule: "#{params[:member][:fav_rule]}", acct_type: "#{params[:member][:acct_type]}")
+      if @member.update_attributes(first_name: "#{params[:member][:first_name]}", last_name: "#{params[:member][:last_name]}", email: "#{params[:member][:email]}", alter_ego: "#{params[:member][:alter_ego]}", password_digest: "#{params[:member][:password_digest]}", aboutme: "#{params[:aboutme]}", location: "#{params[:member][:location]}", title: "#{params[:member][:title]}", education: "#{params[:member][:education]}", haiku: "#{params[:member][:haiku]}", fav_style_manual: "#{params[:member][:fav_style_manual]}", fav_rule: "#{params[:member][:fav_rule]}", acct_type: "#{params[:member][:acct_type]}")
         #For keeping the avatar put: @member.update_attributes(avatar: av, first_name: "#{params[:member][:first_name]}", last_name: "#{params[:member][:last_name]}", email: "#{params[:member][:email]}", alter_ego: "#{params[:member][:alter_ego]}", password_digest: "#{params[:member][:password_digest]}", location: "#{params[:member][:location]}", title: "#{params[:member][:title]}", education: "#{params[:member][:education]}", haiku: "#{params[:member][:haiku]}", fav_style_manual: "#{params[:member][:fav_style_manual]}", fav_rule: "#{params[:member][:fav_rule]}", acct_type: "#{params[:member][:acct_type]}")
         flash[:success] = "You info is now updated."
         format.html { redirect_to @member, notice: 'Member was successfully updated.' }
@@ -139,7 +139,7 @@ class MembersController < ApplicationController
   end
 
   def destroy
-    @member = Member.find(params[:id].to_i)
+    @member = Member.find(params[:id])
 
     @member.destroy
 
@@ -166,10 +166,10 @@ class MembersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     # def set_member
-    #   @member = Member.find(params[:id].to_i)
+    #   @member = Member.find(params[:id])
     # end
 
     def member_params
-      params.require(:member).permit(:avatar, :first_name, :last_name, :email, :alter_ego, :password_digest, :location, :title, :education, :haiku, :fav_style_manual, :fav_rule, :acct_type)
+      params.require(:member).permit(:avatar, :first_name, :last_name, :email, :alter_ego, :password_digest, :aboutme, :location, :title, :education, :haiku, :fav_style_manual, :fav_rule, :acct_type)
     end
 end

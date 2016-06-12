@@ -27,6 +27,8 @@
       <%= password_field_tag(:password_digest, "", minlength: 8, maxlength: 30, required: "required") %>
       <%= label_tag(:password_confirmation, "Confirm Password:") %>
       <%= password_field_tag(:password_confirmation, "", minlength: 8, maxlength: 30, required: "required") %><br/>
+      <%= label_tag(:aboutme, "Origin story (about me):") %>
+      <%= text_field_tag(:aboutme, "") %><br/>
       <%= label_tag(:location, "Location:") %>
       <%= text_field_tag(:location, "") %><br/>
       <%= label_tag(:title, "Title:") %>
