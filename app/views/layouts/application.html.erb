@@ -14,7 +14,7 @@
 </head>
 <body>
   <header class="navbar-wrapper container">
-    <%= link_to image_tag("http://media.techonline.com/img/tmp/logo-placeholder.png", alt: "Logo"), 'http://www.editorsandwriters.com/', class: "brand-logo" %>
+    <%= link_to image_tag("http://media.techonline.com/img/tmp/logo-placeholder.png", alt: "Logo"), '/', class: "brand-logo" %>
     <nav class="right hide-on-small-only grey darken-2">
       <ul>
         <li class="signUpClick"><a>Sign Up</a></li>
@@ -34,6 +34,9 @@
       </ul>
     </nav>
   </header>
+  <% flash.each do |message_type, message| %>
+    <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+  <% end %>
   <hr />
   <div class="container">
     <%= yield %>
@@ -69,7 +72,5 @@
       </div>
     </div>
   </footer>
-  <hr/>
-  <%= debug(params) if Rails.env.development? %>
 </body>
 </html>

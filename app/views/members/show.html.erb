@@ -1,5 +1,63 @@
-<h1>Member name: <%= @member.first_name %></h1>
-<%= link_to 'Home', root_path %>
+<h1>Member name: <%= session[:first_name] %></h1>
+<%= link_to 'Home', root_path %> <br/>
+<%= link_to "Log out", logout_path %>
+
+<section class="writers">
+  <div>
+    1) avatar - <%= @member.avatar %><br/>
+    alter ego - <%= @member.alter_ego %>
+  </div>
+  <div>
+    2) tag line - <%= @member.haiku %>
+  </div>
+  <div>
+    3) origin story/about me [NEED COLUMN/TABLE FOR THIS ABOUT ME SECTION]<br/>
+    Output everything as: simple_format(value, {}, wrapper_tag: 'div') <br/>
+    http://api.rubyonrails.org/classes/ActionView/Helpers/TextHelper.html#M002285 <br/>
+    location - <%= @member.location %> <br/>
+    Name - <%= @member.first_name %> <%= @member.last_name %> [USER CHOOSES TO SHOW THIS OR NOT] <br/>
+    email - <%= @member.email %> <br/>
+    title - <%= @member.title %> <br/>
+    education - <%= @member.education %> <br/>
+  </div>
+  <div>
+    4) slideshow - for sure genres [NEED  TABLE]
+  </div>
+  <div>
+    5) future genres [NEED CATEGORIES TABLE]
+  </div>
+  <div>
+  <p>6) Presentation box: slideshow of 12-15 seconds goes here</p>
+    <div>
+      generic comic book cover [NEED CATEGORIES WITH THUMBNAILS]
+    </div>
+    <div>
+      description of the current snippet [NEED SAMPLES TABLE LINKED TO A CATEGORY]
+    </div>
+  </div>
+</section>
+
+<section class="editors">
+  <div>
+    1) avatar - <%= @member.avatar %><br/>
+    alter ego - <%= @member.alter_ego %>
+  </div>
+  <div>
+    2) ratings widget
+  </div>
+  <div>
+    3) tag line - <%= @member.fav_rule %>
+  </div>
+  <div>
+    4) origin story
+  </div>
+  <div>
+    5) for sure genres
+  </div>
+  <div>
+    6) reviews from writers
+  </div>
+</section>
 <aside>
   <span>Contact Box - Static</span>
   <br/>

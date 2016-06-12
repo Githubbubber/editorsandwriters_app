@@ -1,0 +1,1 @@
+I can use <%= #debug(params) if Rails.env.development? %> to see information about the current page

@@ -20,7 +20,7 @@
       <%= label_tag(:last_name, "Last name:") %>
       <%= text_field_tag(:last_name, "", required: "required") %><br/>
       <%= label_tag(:email, "Email:") %>
-      <%= text_field_tag(:email, "", minlength: 8, maxlength: 60, required: "required") %><br/>
+      <%= email_field_tag(:email, "", minlength: 8, maxlength: 60, required: "required") %><br/>
       <%= label_tag(:alter_ego, "Alter ego (username):") %>
       <%= text_field_tag(:alter_ego, "", required: "required") %><br/>
       <%= label_tag(:password_digest, "Password:") %>

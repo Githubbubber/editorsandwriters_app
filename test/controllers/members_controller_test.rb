@@ -3,7 +3,9 @@ require 'test_helper'
 class MembersControllerTest < ActionController::TestCase
 
   def setup
-    @member = Member.new(avatar: "http://e.net/e.jpg", first_name: "e", last_name: "e", email: "eee@eee.com", alter_ego: "eee", password: "foobar123", password_confirmation: "foobar123", location: "e", title: "e", education: "e", haiku: "", fav_style_manual: "e", fav_rule: "e. Yup.", acct_type: "editor")
+    @member = Member.create(avatar: "http://w1.net/w1.jpg", first_name: "w1", last_name: "w1", email: "w1@w1.com", alter_ego: "w1", password_digest: "w1w1w1w1", location: "w1", title: "w1", education: "w1", haiku: "w1 w1w1w1 w1w1", fav_style_manual: "", fav_rule: "", acct_type: "writer" )
+    @password = BCrypt::Password.create("w1w1w1w1")
+    @member.update_attribute(:password_digest, @password)
   end
 
   test "should add user" do
@@ -53,11 +55,11 @@ class MembersControllerTest < ActionController::TestCase
   #   end
   # end
 
-  # test "email addresses should be unique" do
-  #   duplicate_user = @member.dup
-  #   @member.save
-  #   assert_not duplicate_user.valid?
-  # end
+  test "email addresses should be unique" do
+    duplicate_user = @member.dup
+    @member.save
+    assert_not duplicate_user.valid?
+  end
 
   test "password should be present (nonblank)" do
     @member.password_digest = @member.password_confirmation = " " * 6
@@ -79,15 +81,47 @@ class MembersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  # test "should show 404 error image" do
-  #   get :not_found
-  #   assert_response :success
+  # test "invalid signup information" do
+  #   get "index"
+  #   assert_no_difference 'Member.count' do
+  #     post "create", member: { avatar: "http://w1.net/w1.jpg",
+  #                                 first_name: "", last_name: "w1",
+  #                                 email: "w1@w1.com", alter_ego: "1",
+  #                                 password_digest: "w1", location: "w1",
+  #                                 title: "w1", education: "w1",
+  #                                 haiku: "w1 w1w1w1 w1w1", fav_style_manual: "",
+  #                                 fav_rule: "", acct_type: "" }
+  #   end
+  #   assert_not @member.valid?
   # end
 
+  test "valid signup information" do
+    get "index"
+    assert_difference 'Member.count', 1 do
+      post "create", member: { avatar: "http://w1.net/w1.jpg",
+                                          first_name: "w1", last_name: "w1",
+                                          email: "w1@w1.com", alter_ego: "w1",
+                                          password_digest: "w1w1w1w1",
+                                          location: "w1", title: "w1",
+                                          education: "w1",
+                                          haiku: "w1 w1w1w1 w1w1",
+                                          av_style_manual: "", fav_rule: "",
+                                          acct_type: "writer" }
+    end
+    # assert_template 'members#show'
+    assert is_logged_in?
+  end
+
+  # # test "should show 404 error image" do
+  # #   get :not_found
+  # #   assert_response :success
+  # # end
+
   # test "should check password_digest" do
-  #   password = "e4e4e4e4"
-  #   @user = Member.find_by(alter_ego: "e4")
-  #   @user.is_password?(password)
+  #   setup
+  #   password = "w1w1w1w1"
+  #   @temp = Member.find_by(alter_ego: "w1")
+  #   @temp.is_password?(password)
   #   assert_response :success
   # end
 end
