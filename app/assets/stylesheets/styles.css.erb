@@ -1,4 +1,7 @@
-body { background: white url('./wallpaper.jpg') repeat-x 0 0; position: relative;}
+//= depend_on_asset "default_comic.jpg"
+//= depend_on_asset "wallpaper.jpg"
+
+body { background: white url('<%= asset_path("/assets/wallpaper.jpg") %>') repeat-x 0 0; position: relative;}
 h1 { background-color: white; font-family: Arial; border: 1px solid black;  }
 li { list-style-type:none; }
 .panel {
@@ -42,7 +45,7 @@ nav { box-shadow: none; }
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
-  src: local('Material Icons'), local('MaterialIcons-Regular'), url(https://fonts.gstatic.com/s/materialicons/v17/2fcrYFNaTjcS6g4U3t-Y5UEw0lE80llgEseQY3FEmqw.woff2) format('woff2');
+  src: local('Material Icons'), local('MaterialIcons-Regular'), url('https://fonts.gstatic.com/s/materialicons/v17/2fcrYFNaTjcS6g4U3t-Y5UEw0lE80llgEseQY3FEmqw.woff2') format('woff2');
 }
 
 .material-icons {
