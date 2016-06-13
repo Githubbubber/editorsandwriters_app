@@ -11,10 +11,14 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
     </script>
   <![endif]-->
+
+<link rel="stylesheet" href="//assets-cdn.ziggeo.com/v1-stable/ziggeo.css" />
+<script src="//assets-cdn.ziggeo.com/v1-stable/ziggeo.js"></script>
+<script>ZiggeoApi.token = "3b04eecffae647204bfdd4f545f7686e";</script>
 </head>
 
 <body>
-  <%= link_to image_tag("http://media.techonline.com/img/tmp/logo-placeholder.png", alt: "Logo"), '/', class: "brand-logo left hide-on-med-and-down", id: "logo-container" %>
+  <%= link_to image_tag("/assets/default_comic.jpg", alt: "Logo"), '/', class: "brand-logo left hide-on-med-and-down", id: "logo-container" %>
   <header class="navbar-wrapper container">
     <nav class="right hide-on-small-only grey darken-2" role="navigation">
       <div class="nav-wrapper container">
@@ -45,20 +49,18 @@
 
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
-      <h1 class="header center">Editors and Writers</h1>
+      <h1 class="header center"><a href="http://localhost:3000" class="black-text">Editors and Writers</a></h1>
       <% if session[:alter_ego] == "" || session[:alter_ego] == nil %>
         <h2 class="header center">~welcome~</h2>
         <div class="row center">
           <h5 class="header col s12 light">Where editors and writers can celebrate comics and creativity</h5>
         </div>
-        <div class="row center">
-          <a href="/" class="signUpClick btn-large waves-effect waves-light">Join Us</a>
+        <div class="row center signUpClick">
+          <a class="signUpClick btn-large waves-effect waves-light">Join Us</a>
       </div>
       <% end %>
     </div>
   </div>
-
-  <hr />
 
   <div class="container">
     <%= yield %>
@@ -94,6 +96,22 @@
       </div>
     </div>
   </footer>
+  <script>
+        ZiggeoApi.Events.on("submitted", function (data) {
+            alert("The video with token " + data.video.token + " has been submitted!");
+        });
+  </script>
+  <script>
+        ZiggeoApi.Videos.source('b48b9ae32d173da152da7c19570a1e4a')
+  </script><!--
+  <script>
+          ZiggeoApi.Videos.index({}, {
+              success: function (args, videos) {
+                for (var i = 0; i < videos.length; ++i)
+                  $("body").append("<ziggeo ziggeo-video='" + videos[i].token + "'></ziggeo>");
+              }
+          });
+  </script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
 </body>
 </html>

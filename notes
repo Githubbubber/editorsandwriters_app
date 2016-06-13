@@ -1,1 +1,35 @@
 I can use <%= #debug(params) if Rails.env.development? %> to see information about the current page
+
+<!--Output everything as: simple_format(value, {}, wrapper_tag: 'div') <br/>
+http://api.rubyonrails.org/classes/ActionView/Helpers/TextHelper.html#M002285 <br/>-->
+
+
+# av = @member.avatar
+# For keeping the avatar put: @member.update_attributes(avatar: av, first_name: "#{params[:member][:first_name]}", last_name: "#{params[:member][:last_name]}", email: "#{params[:member][:email]}", alter_ego: "#{params[:member][:alter_ego]}", password_digest: "#{params[:member][:password_digest]}", location: "#{params[:member][:location]}", title: "#{params[:member][:title]}", education: "#{params[:member][:education]}", haiku: "#{params[:member][:haiku]}", fav_style_manual: "#{params[:member][:fav_style_manual]}", fav_rule: "#{params[:member][:fav_rule]}", acct_type: "#{params[:member][:acct_type]}")
+# flash[:success] = "You info is now updated."
+
+
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    # def set_member
+    #   @member = Member.find(params[:id])
+    # end
+
+    def member_params
+      params.require(:member).permit(:avatar, :first_name, :last_name, :email, :alter_ego, :password_digest, :aboutme, :location, :title, :education, :haiku, :fav_style_manual, :fav_rule, :acct_type)
+    end
+
+
+# loginnum = loginnum + 1
+# @member.update(loginnum: loginnum)
+
+# loginnum = @member.loginnum
+# if @member.is_password?(password) && @member.acct_type == "#{params[:acct_type]}"
+
+
+<!-- Decoding the Code:
+Recording time is limited to: 15 seconds
+The size of the embedded recorder is: 320x240
+It's all customizable.
+-->

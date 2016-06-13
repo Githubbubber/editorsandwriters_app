@@ -1,93 +1,100 @@
 <div class="section">
   <div class="row">
     <div class="col s10">
-      <section class="writers">
-        <div class="row">
-          <div class="border col s12 m6 l6">
-            1) avatar - <%= @member.avatar %><br/>
-            alter ego - <%= @member.alter_ego %>
+      <% if session[:acct_type] == "writer" %>
+        <section>
+          <div class="row">
+            <div class="panel half_bg right_white_border col s12 m6 l6">
+              1) avatar - <%= @member.avatar %><br/>
+              alter ego - <%= @member.alter_ego %>
+            </div>
+            <div class="panel half_bg left_white_border col s12 m6 l6">
+              2) tag line - <%= @member.haiku %>
+            </div>
           </div>
-          <div class="border col s12 m6 l6">
-            2) tag line - <%= @member.haiku %>
+          <div class="row">
+            <div class="panel full_bg col s12 m12 l12">
+              3) origin story/about me - <%= @member.aboutme %><br/>
+              location - <%= @member.location %> <br/>
+              <p>Member name: <%= session[:first_name] %></p> [USER CHOOSES TO SHOW THIS OR NOT] <br/>
+              email - <%= @member.email %> <br/>
+              title - <%= @member.title %> <br/>
+              education - <%= @member.education %>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="border col s12 m12 l12">
-            3) origin story/about me - <%= @member.aboutme %><br/>
-            <!--Output everything as: simple_format(value, {}, wrapper_tag: 'div') <br/>
-            http://api.rubyonrails.org/classes/ActionView/Helpers/TextHelper.html#M002285 <br/>-->
-            location - <%= @member.location %> <br/>
-            <p>Member name: <%= session[:first_name] %></p> [USER CHOOSES TO SHOW THIS OR NOT] <br/>
-            email - <%= @member.email %> <br/>
-            title - <%= @member.title %> <br/>
-            education - <%= @member.education %>
+          <div class="row">
+            <div class="panel half_bg col s12 m6 l6">
+              4) slideshow - for sure genres [NEED  TABLE]
+            </div>
+            <div class="panel half_bg col s12 m6 l6">
+              5) future genres [NEED CATEGORIES TABLE]
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="border col s12 m6 l6">
-            4) slideshow - for sure genres [NEED  TABLE]
+          <div class="row">
+            <div class="panel full_bg col s12 m12 l12">
+              <p>6) Presentation box: slideshow of 12-15 seconds goes here</p>
+              generic comic book cover [NEED CATEGORIES WITH THUMBNAILS]
+              <br />
+              description of the current snippet [NEED SAMPLES TABLE LINKED TO A CATEGORY]
+            </div>
           </div>
-          <div class="border col s12 m6 l6">
-            5) future genres [NEED CATEGORIES TABLE]
-          </div>
-        </div>
-        <div class="row">
-          <div class="border col s12 m12 l12">
-            <p>6) Presentation box: slideshow of 12-15 seconds goes here</p>
-            generic comic book cover [NEED CATEGORIES WITH THUMBNAILS]
-            <br />
-            description of the current snippet [NEED SAMPLES TABLE LINKED TO A CATEGORY]
-          </div>
-        </div>
-      </section>
-
-      <section class="editors">
-        <div class="row">
-          <div class="border col s12 m6 l6">
-            1) avatar - <%= @member.avatar %><br/>
-            alter ego - <%= @member.alter_ego %>
-          </div>
-          <div class="border col s12 m6 l6">
-            2) ratings widget
+          <aside id="contactBox">
+            <button>Email this writer</button>
             <br/>
-            3) Favorite rule - <%= @member.fav_rule %>
+            <button>Request Help</button>
+          </aside>
+        </section>
+      <% elsif session[:acct_type] == "editor" %>
+        <section>
+          <div class="row">
+            <div class="panel half_bg col s12 m6 l6">
+              1) avatar - <%= @member.avatar %><br/>
+              alter ego - <%= @member.alter_ego %>
+            </div>
+            <div class="panel half_bg col s12 m6 l6">
+              2) ratings widget
+              <br/>
+              3) Favorite rule - <%= @member.fav_rule %>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="border col s12 m12 l12">
-            4) origin story/about me - <%= @member.aboutme %><br/>
-            <!--Output everything as: simple_format(value, {}, wrapper_tag: 'div') <br/>
-            http://api.rubyonrails.org/classes/ActionView/Helpers/TextHelper.html#M002285 <br/>-->
-            location - <%= @member.location %> <br/>
-            <p>Member name: <%= session[:first_name] %></p> [USER CHOOSES TO SHOW THIS OR NOT] <br/>
-            email - <%= @member.email %> <br/>
-            title - <%= @member.title %> <br/>
-            education - <%= @member.education %>
+          <div class="row">
+            <div class="panel full_bg col s12 m12 l12">
+              4) origin story/about me - <%= @member.aboutme %><br/>
+              location - <%= @member.location %> <br/>
+              Member name: <%= session[:first_name] %>[USER CHOOSES TO SHOW THIS OR NOT] <br/>
+              email - <%= @member.email %> <br/>
+              title - <%= @member.title %> <br/>
+              education - <%= @member.education %>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="border col s12 m12 l12">
-            5) for sure genres
+          <div class="row">
+            <div class="panel full_bg col s12 m12 l12">
+              5) for sure genres
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="border col s12 m12 l12">
-            6) reviews from writers
+          <div class="row">
+            <div class="panel full_bg col s12 m12 l12">
+              6) reviews from writers
+            </div>
           </div>
-        </div>
-      </section>
+          <aside id="contactBox">
+            <button>Email this editor</button>
+            <br/>
+            <button>Offer Help</button>
+          </aside>
+        </section>
+      <% end %>
     </div>
-
-    <div class="col s2">
-      <aside>
-        <span>Contact Box - Static</span>
-        <br/>
-        <span>Request help btn</span>
-        <br/>
-        <span>Chat Box - Bottom absolute: Greyed out until accepted project</span>
-        <br/>
-        <span>Writers will have an "Offer help" button, and editors an "Request help" button</span>
-      </aside>
+  </div>
+  <div class="chatBox">
+    <button id="chatBtn">Video chat</button>
+    <button id="closeChatBtn">Close video chat</button>
+    <div id="tempHide">
+      <ziggeo ziggeo-limit=15 ziggeo-width=320 ziggeo-height=240></ziggeo>
+      <!-- <ziggeo ziggeo-video='b48b9ae32d173da152da7c19570a1e4a'
+        ziggeo-width=320
+        ziggeo-height=240>
+      </ziggeo> -->
     </div>
   </div>
 </div>

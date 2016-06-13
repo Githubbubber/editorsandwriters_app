@@ -1,15 +1,25 @@
-body { background: white url('./wallpaper.jpg') repeat-x 0 0; }
+body { background: white url('./wallpaper.jpg') repeat-x 0 0; position: relative;}
 h1 { background-color: white; font-family: Arial; border: 1px solid black;  }
 li { list-style-type:none; }
-aside, .border {
+.panel {
   padding: 10px 0;
   border: 1px solid black;
   background-color: white;
   border-collapse: collapse;
   box-sizing: border-box;
+  min-height: 200px;
 }
-aside {
-  margin-top: 20px;
+
+aside#contactBox {
+  position:fixed;
+  width:100px;
+  top:0;
+  right: 5px;
+}
+
+aside#contactBox button {
+  margin: 15px 0;
+  width: 100px;
 }
 
 aside span {
@@ -60,4 +70,29 @@ nav { box-shadow: none; }
 }
 .icon-block .material-icons {
   font-size: inherit;
+}
+
+.right_white_border {
+  border-right: 2px solid white;
+}
+
+.left_white_border {
+  border-left: 2px solid white;
+}
+
+.chatBox {
+  position:absolute;
+  right: 0; bottom: 150px;
+  background-color:grey;
+  height: 200px;
+  width: 200px;
+}
+
+#tempHide, #closeChatBtn {
+  display: none;
+}
+
+#space {
+  margin: 5% auto;
+  min-height: 100px;
 }

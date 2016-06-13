@@ -9,10 +9,11 @@ Rails.application.routes.draw do
   get   "login",    to: "members#signup_login"
   patch "members",  to: "members#login"
   get   "logout",   to: "members#logout"
+  get   "members#logout",   to: "members#logout"
 
   # Other pages
-  get   "help",           to: "members#help"
-  get   "abouteaw",           to: "members#abouteaw"
+  get   "help",     to: "members#help"
+  get   "abouteaw", to: "members#abouteaw"
   # get   "*",              to: "members#not_found"
 end
 
